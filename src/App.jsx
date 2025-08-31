@@ -9,7 +9,7 @@ function App() {
         <img
           src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9MT0dPLnBuZyIsImlhdCI6MTc1NjY1NjU0OCwiZXhwIjoxNzg4MTkyNTQ4fQ.DK-JcyydOfN_DDkuJNTEVzLYA_h6mhJujrE1XZ0iva4"
           alt="Logo principale"
-          className="w-20 h-20 mt-8 mb-6 mx-auto"
+            className="w-[400px] h-[200px] mt-8 mb-6 mx-auto object-contain"
         />
         <div className="mb-8">
           <select
