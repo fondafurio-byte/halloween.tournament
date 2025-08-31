@@ -7,9 +7,9 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col items-center bg-black text-white">
         <img
-          src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9sb2dvLnBuZyIsImlhdCI6MTc1NjYyNDIxOSwiZXhwIjoxNzg4MTYwMjE5fQ.Ol5WX85j3SjYwn5Rke5vY_4rRHcdqSUiNkw-d1Ua7vw"
+          src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9MT0dPLnBuZyIsImlhdCI6MTc1NjY1NjU0OCwiZXhwIjoxNzg4MTkyNTQ4fQ.DK-JcyydOfN_DDkuJNTEVzLYA_h6mhJujrE1XZ0iva4"
           alt="Logo principale"
-          className="w-40 h-40 mt-8 mb-6 mx-auto"
+          className="w-20 h-20 mt-8 mb-6 mx-auto"
         />
         <div className="mb-8">
           <select
