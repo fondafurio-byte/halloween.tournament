@@ -28,7 +28,7 @@ function CardGiornate({ partite, getNomeSquadra }) {
             }, {})
         ).map(([giornata, partiteGiornata]) => (
           <div key={giornata} className="mb-8 p-4 border-2 border-blue-900 rounded-xl bg-gray-950 shadow-lg">
-            <div className="font-semibold mb-4 text-blue-300 text-center text-lg">Giornata {giornata}</div>
+            <div className="font-semibold mb-4 text-blue-300 text-center text-lg">Gara {giornata}</div>
             <table className="w-full bg-gray-800 rounded-lg overflow-hidden table-fixed">
               <colgroup>
                 <col className="w-2/6" />
