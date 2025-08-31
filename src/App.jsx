@@ -7,7 +7,7 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col items-center bg-black text-white">
         <img
-          src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9MT0dPLnBuZyIsImlhdCI6MTc1NjY1NjU0OCwiZXhwIjoxNzg4MTkyNTQ4fQ.DK-JcyydOfN_DDkuJNTEVzLYA_h6mhJujrE1XZ0iva4"
+          src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9MT0dPLnBuZyIsImlhdCI6MTc1NjY1Njg5MSwiZXhwIjoxNzg4MTkyODkxfQ.P4Q6gyZ91euGupvfsOO1q-uCXsaroM0YAvJtcYc7kQI"
           alt="Logo principale"
             className="w-[400px] h-[200px] mt-8 mb-6 mx-auto object-contain"
         />
