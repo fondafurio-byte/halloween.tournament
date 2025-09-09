@@ -16,10 +16,12 @@ function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showInstallBanner, setShowInstallBanner] = useState(false);
   const [isIos, setIsIos] = useState(false);
-  // Rileva iOS
+  // Rileva iOS e se l'app è già installata (standalone)
+  const [isStandalone, setIsStandalone] = useState(false);
   useEffect(() => {
     const ua = window.navigator.userAgent;
     setIsIos(/iPad|iPhone|iPod/.test(ua) && !window.MSStream);
+    setIsStandalone(window.navigator.standalone === true);
   }, []);
   // Gestione evento installazione PWA
   useEffect(() => {
@@ -69,7 +71,7 @@ function App() {
       <Router>
         <div className="min-h-screen flex flex-col items-center bg-black text-white">
           {/* Banner informativo installazione app */}
-          {(showInstallBanner || isIos) && (
+          {(showInstallBanner || (isIos && !isStandalone)) && (
             <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 border border-white rounded-xl shadow-xl px-4 py-4 flex flex-col sm:flex-row items-center gap-4 animate-fade-in w-[95vw] max-w-xl" style={{ background: '#000', opacity: 1 }}>
               <span className="font-bold text-base sm:text-lg text-white text-center drop-shadow-lg">
                 Installa questa webapp come app per un accesso più rapido!
