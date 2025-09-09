@@ -17,8 +17,8 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       const tag = document.activeElement.tagName.toLowerCase();
-      // Solo se NON admin e NON in input/textarea/select
-      if (!isAdmin && e.ctrlKey && (e.key === 'a' || e.key === 'A') && !['input','textarea','select'].includes(tag)) {
+      // Ctrl+Shift+A per aprire popup admin solo se NON admin e NON in input/textarea/select
+      if (!isAdmin && e.ctrlKey && e.shiftKey && (e.key === 'a' || e.key === 'A') && !['input','textarea','select'].includes(tag)) {
         e.preventDefault();
         setShowAdminLogin(true);
         return false;
