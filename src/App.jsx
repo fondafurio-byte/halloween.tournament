@@ -16,7 +16,9 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key === 'a') {
+      // Blocca la shortcut solo se NON sei in un campo input/textarea/select
+      const tag = document.activeElement.tagName.toLowerCase();
+      if (e.ctrlKey && (e.key === 'a' || e.key === 'A') && !['input','textarea','select'].includes(tag)) {
         e.preventDefault();
         setShowAdminLogin(true);
       }
