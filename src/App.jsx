@@ -44,11 +44,25 @@ function App() {
     <AdminContext.Provider value={{ isAdmin, user }}>
       <Router>
         <div className="min-h-screen flex flex-col items-center bg-black text-white">
-          <img
-            src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/loGo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9sb0dvLnBuZyIsImlhdCI6MTc1NjY1NzIxNSwiZXhwIjoxNzg4MTkzMjE1fQ.T0QHXSKNpcCxNgBnKa7gpqDIZq0hqZ8fNfJWSTIOpWg"
-            alt="Logo principale"
-            className="w-[400px] h-[200px] mt-8 mb-6 mx-auto object-contain"
-          />
+          <div className="relative w-[400px] h-[200px] mt-8 mb-6 mx-auto">
+            <img
+              src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/loGo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9sb0dvLnBuZyIsImlhdCI6MTc1NjY1NzIxNSwiZXhwIjoxNzg4MTkzMjE1fQ.T0QHXSKNpcCxNgBnKa7gpqDIZq0hqZ8fNfJWSTIOpWg"
+              alt="Logo principale"
+              className="w-full h-full object-contain"
+              style={{ pointerEvents: !isAdmin ? 'none' : 'auto', userSelect: !isAdmin ? 'none' : 'auto' }}
+            />
+            {/* Mostra input file solo se admin */}
+            {isAdmin && (
+              <input
+                type="file"
+                accept="image/*"
+                className="absolute bottom-2 right-2 bg-white text-black rounded px-2 py-1 shadow"
+                style={{ zIndex: 10 }}
+                onChange={() => alert('Funzione upload non implementata in questa demo')}
+                title="Carica nuovo logo (solo admin)"
+              />
+            )}
+          </div>
           <div className="mb-8">
             <select
               className="px-4 py-2 rounded-lg shadow border border-blue-300 text-blue-700 bg-white"
