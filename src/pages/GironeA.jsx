@@ -48,13 +48,13 @@ function CardGiornate({ partite, getNomeSquadra }) {
                         <input
                           type="text"
                           placeholder="Testo..."
-                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-transparent text-white w-24 text-center placeholder:text-gray-400"
+                          className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
                         />
                         <input
                           type="time"
                           id={`orario-gara-${p.id}`}
                           name={`orario-gara-${p.id}`}
-                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-transparent text-white text-center"
+                          className="text-xs px-1 py-0.5 rounded bg-transparent text-white text-center border-0 focus:ring-0"
                         />
                       </div>
                     </td>
