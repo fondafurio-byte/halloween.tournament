@@ -70,7 +70,7 @@ function App() {
         <div className="min-h-screen flex flex-col items-center bg-black text-white">
           {/* Banner informativo installazione app */}
           {(showInstallBanner || isIos) && (
-            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-black border border-white rounded-xl shadow-xl px-4 py-4 flex flex-col sm:flex-row items-center gap-4 animate-fade-in w-[95vw] max-w-xl">
+            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 border border-white rounded-xl shadow-xl px-4 py-4 flex flex-col sm:flex-row items-center gap-4 animate-fade-in w-[95vw] max-w-xl" style={{ background: '#000', opacity: 1 }}>
               <span className="font-bold text-base sm:text-lg text-white text-center drop-shadow-lg">
                 Installa questa webapp come app per un accesso più rapido!
                 {isIos ? (
