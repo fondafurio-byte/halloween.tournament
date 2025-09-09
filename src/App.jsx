@@ -131,7 +131,10 @@ function CustomAdminLogin({ onSuccess, onClose }) {
       return;
     }
     const passwordHash = await sha256(password);
-    if (data.password !== passwordHash) {
+    // DEBUG: logga hash calcolato e hash da Supabase
+    console.log('Hash calcolato:', passwordHash);
+    console.log('Hash Supabase:', data.password_hash);
+    if (data.password_hash !== passwordHash) {
       setError("Password errata");
       setLoading(false);
       return;
