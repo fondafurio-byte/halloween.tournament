@@ -51,8 +51,8 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             type="text"
                             placeholder="Testo..."
                             className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
-                            value={values[p.id]?.note || ""}
-                            onChange={e => isAdmin ? onChange(p.id, "note", e.target.value) : undefined}
+                            onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
+                            value={values[p.id]?.campo || ""}
                             disabled={!isAdmin}
                             readOnly={!isAdmin}
                             tabIndex={isAdmin ? 0 : -1}
@@ -129,7 +129,7 @@ function GironeA({ isAdmin }) {
         const initial = {};
         (data || []).forEach(p => {
           initial[p.id] = {
-            note: p.note || "",
+              campo: p.campo || "",
             orario: p.orario || ""
           };
         });
@@ -162,7 +162,7 @@ function GironeA({ isAdmin }) {
     setMessage("");
     try {
       const updates = Object.entries(inputValues).map(([id, vals]) =>
-        supabase.from("partite").update({ note: vals.note, orario: vals.orario }).eq("id", id)
+    supabase.from("partite").update({ campo: vals.campo, orario: vals.orario }).eq("id", id)
       );
       await Promise.all(updates);
       setMessage("Modifiche salvate con successo!");
