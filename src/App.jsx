@@ -59,22 +59,23 @@ function App() {
               <option value="/girone-b">Girone B</option>
             </select>
           </div>
-          {/* Pulsante accedi come admin visibile solo se non admin */}
+          <div className="w-full max-w-3xl">
+            <Routes>
+              <Route path="/girone-a" element={<GironeA isAdmin={isAdmin} />} />
+              <Route path="/girone-b" element={<GironeB isAdmin={isAdmin} />} />
+              <Route path="*" element={<GironeA isAdmin={isAdmin} />} />
+            </Routes>
+          </div>
+
+          {/* Pulsante accedi come admin in fondo alla pagina */}
           {!isAdmin && (
             <button
-              className="mb-4 px-6 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold shadow"
+              className="mt-8 mb-8 px-6 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold shadow"
               onClick={() => setShowAdminLogin(true)}
             >
               Accedi come admin
             </button>
           )}
-          <div className="w-full max-w-3xl">
-            <Routes>
-              <Route path="/girone-a" element={<GironeA />} />
-              <Route path="/girone-b" element={<GironeB />} />
-              <Route path="*" element={<GironeA />} />
-            </Routes>
-          </div>
 
           {showAdminLogin && !isAdmin && (
             <CustomAdminLogin onSuccess={() => { setIsAdmin(true); setShowAdminLogin(false); }} onClose={() => setShowAdminLogin(false)} />

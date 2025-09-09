@@ -99,7 +99,7 @@ function GironeB() {
   const [giornate, setGiornate] = useState([]);
   const [partite, setPartite] = useState([]);
   const [squadre, setSquadre] = useState([]);
-  const { isAdmin } = useContext(AdminContext);
+  // isAdmin ora arriva come prop da App.jsx
   const [inputValues, setInputValues] = useState({});
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
