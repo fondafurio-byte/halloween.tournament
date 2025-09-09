@@ -52,9 +52,10 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             placeholder="Testo..."
                             className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
                             value={values[p.id]?.note || ""}
-                            onChange={e => isAdmin && onChange(p.id, "note", e.target.value)}
-                            disabled={!isAdmin}
-                            readOnly={!isAdmin}
+                            onChange={e => isAdmin ? onChange(p.id, "note", e.target.value) : undefined}
+                            disabled={!isAdmin || !user}
+                            readOnly={!isAdmin || !user}
+                            tabIndex={isAdmin && user ? 0 : -1}
                           />
                           <input
                             type="time"
@@ -62,9 +63,10 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             name={`orario-gara-${p.id}`}
                             className="text-xs px-1 py-0.5 rounded bg-transparent text-white text-center border-0 focus:ring-0"
                             value={values[p.id]?.orario || ""}
-                            onChange={e => isAdmin && onChange(p.id, "orario", e.target.value)}
-                            disabled={!isAdmin}
-                            readOnly={!isAdmin}
+                            onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
+                            disabled={!isAdmin || !user}
+                            readOnly={!isAdmin || !user}
+                            tabIndex={isAdmin && user ? 0 : -1}
                           />
                         </div>
                       </td>

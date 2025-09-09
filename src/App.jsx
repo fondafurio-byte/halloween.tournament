@@ -16,16 +16,17 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Blocca la shortcut solo se NON sei in un campo input/textarea/select
       const tag = document.activeElement.tagName.toLowerCase();
-      if (e.ctrlKey && (e.key === 'a' || e.key === 'A') && !['input','textarea','select'].includes(tag)) {
+      // Solo se NON admin e NON in input/textarea/select
+      if (!isAdmin && e.ctrlKey && (e.key === 'a' || e.key === 'A') && !['input','textarea','select'].includes(tag)) {
         e.preventDefault();
         setShowAdminLogin(true);
+        return false;
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isAdmin]);
 
   useEffect(() => {
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
