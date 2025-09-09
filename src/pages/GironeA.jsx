@@ -52,7 +52,8 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             <input
                               type="text"
                               placeholder="CAMPO"
-                              className={`text-xs px-2 py-1 rounded w-10 text-center placeholder:text-gray-400 focus:ring-0 ${isAdmin ? 'bg-gray-900 text-white border border-blue-700' : 'bg-transparent text-white border-0'}`}
+                              className={`text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 ${isAdmin ? 'bg-gray-900 text-white border border-blue-700' : 'bg-transparent text-white border-0'}`}
+                              style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.25rem' }}
                               maxLength={8}
                               onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
                               value={values[p.id]?.campo || ""}
