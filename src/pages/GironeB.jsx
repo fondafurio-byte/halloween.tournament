@@ -47,7 +47,8 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                       <td className="py-2 px-2 text-center align-middle">
                         -
                         <div className="flex flex-col items-center justify-center mt-1 gap-1">
-                          <div className="flex flex-row items-center justify-center gap-2 bg-gray-800 rounded-lg px-3 py-2 shadow-md">
+                          <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md">
+                            {/* bg-transparent mantiene lo sfondo trasparente */}
                             <input
                               type="text"
                               placeholder="CAMPO"
