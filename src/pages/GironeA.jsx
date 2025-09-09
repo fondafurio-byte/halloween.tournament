@@ -51,6 +51,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             type="text"
                             placeholder="Testo..."
                             className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
+                            maxLength={8}
                             onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
                             value={values[p.id]?.campo || ""}
                             disabled={!isAdmin}

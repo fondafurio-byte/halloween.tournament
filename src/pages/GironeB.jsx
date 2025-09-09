@@ -51,22 +51,12 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             type="text"
                             placeholder="Testo..."
                             className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
-                              value={values[p.id]?.campo || ""}
-                              onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
-                            disabled={!isAdmin || !user}
-                            readOnly={!isAdmin || !user}
-                            tabIndex={isAdmin && user ? 0 : -1}
-                          />
-                          <input
-                            type="time"
-                            id={`orario-gara-${p.id}`}
-                            name={`orario-gara-${p.id}`}
-                            className="text-xs px-1 py-0.5 rounded bg-transparent text-white text-center border-0 focus:ring-0"
-                            value={values[p.id]?.orario || ""}
-                            onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
-                            disabled={!isAdmin || !user}
-                            readOnly={!isAdmin || !user}
-                            tabIndex={isAdmin && user ? 0 : -1}
+                            maxLength={8}
+                            value={values[p.id]?.campo || ""}
+                            onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
+                            disabled={!isAdmin}
+                            readOnly={!isAdmin}
+                            tabIndex={isAdmin ? 0 : -1}
                           />
                         </div>
                       </td>
