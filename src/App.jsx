@@ -1,10 +1,8 @@
+import React, { useEffect, useState, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GironeA from "./pages/GironeA";
 import GironeB from "./pages/GironeB";
-import { useEffect, useState, createContext } from "react";
 import { supabase } from "./supabaseClient";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 
 export const AdminContext = createContext({ isAdmin: false });
@@ -68,25 +66,83 @@ function App() {
               <Route path="*" element={<GironeA />} />
             </Routes>
           </div>
+
           {showAdminLogin && !isAdmin && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-              <div className="bg-gray-900 p-6 rounded-xl shadow-lg w-full max-w-xs">
-                <h2 className="text-lg font-bold mb-4 text-center">Accesso Amministratore</h2>
-                <Auth
-                  supabaseClient={supabase}
-                  appearance={{ theme: ThemeSupa }}
-                  theme="dark"
-                  providers={[]}
-                />
-                <button className="mt-4 w-full py-2 rounded bg-gray-700 text-white" onClick={() => setShowAdminLogin(false)}>
-                  Chiudi
-                </button>
-              </div>
-            </div>
+            <CustomAdminLogin onSuccess={() => { setIsAdmin(true); setShowAdminLogin(false); }} onClose={() => setShowAdminLogin(false)} />
           )}
         </div>
       </Router>
     </AdminContext.Provider>
+  );
+}
+
+// Form custom per login admin tramite tabella utenti
+function CustomAdminLogin({ onSuccess, onClose }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    // Query tabella utenti: username e password (plaintext o hash, qui plaintext per esempio)
+    const { data, error: dbError } = await supabase
+      .from("utenti")
+      .select("*")
+      .eq("username", username)
+      .single();
+    if (dbError || !data) {
+      setError("Utente non trovato");
+      setLoading(false);
+      return;
+    }
+    if (data.password !== password) {
+      setError("Password errata");
+      setLoading(false);
+      return;
+    }
+    setLoading(false);
+    onSuccess();
+  };
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+      <div className="bg-gray-900 p-6 rounded-xl shadow-lg w-full max-w-xs">
+        <h2 className="text-lg font-bold mb-4 text-center">Accesso Amministratore</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="w-full mb-3 px-3 py-2 rounded bg-gray-800 text-white border border-gray-700"
+            placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            autoFocus
+            required
+          />
+          <input
+            type="password"
+            className="w-full mb-3 px-3 py-2 rounded bg-gray-800 text-white border border-gray-700"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+          {error && <div className="text-red-400 mb-2 text-center">{error}</div>}
+          <button
+            type="submit"
+            className="w-full py-2 rounded bg-blue-700 hover:bg-blue-800 text-white font-bold mb-2"
+            disabled={loading}
+          >
+            {loading ? "Verifica..." : "Accedi"}
+          </button>
+        </form>
+        <button className="w-full py-2 rounded bg-gray-700 text-white" onClick={onClose}>
+          Chiudi
+        </button>
+      </div>
+    </div>
   );
 }
 
