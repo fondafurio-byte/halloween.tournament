@@ -7,10 +7,28 @@ import { supabase } from "./supabaseClient";
 
 export const AdminContext = createContext({ isAdmin: false });
 
+
 function App() {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState(null);
+  // Banner installa PWA
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallBanner, setShowInstallBanner] = useState(false);
+  // Gestione evento installazione PWA
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallBanner(true);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    // Se già installata, non mostrare banner
+    window.addEventListener('appinstalled', () => setShowInstallBanner(false));
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -44,6 +62,31 @@ function App() {
     <AdminContext.Provider value={{ isAdmin, user }}>
       <Router>
         <div className="min-h-screen flex flex-col items-center bg-black text-white">
+          {/* Banner installa PWA */}
+          {showInstallBanner && (
+            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-gray-900 bg-opacity-95 border border-blue-700 rounded-xl shadow-lg px-6 py-4 flex items-center gap-4 animate-fade-in">
+              <span className="font-semibold text-white">Installa come app per un accesso più rapido!</span>
+              <button
+                className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded font-bold shadow"
+                onClick={async () => {
+                  if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') setShowInstallBanner(false);
+                  }
+                }}
+              >
+                Installa
+              </button>
+              <button
+                className="ml-2 text-gray-400 hover:text-white text-xl font-bold"
+                onClick={() => setShowInstallBanner(false)}
+                title="Chiudi"
+              >
+                ×
+              </button>
+            </div>
+          )}
           <div className="relative w-[400px] h-[200px] mt-8 mb-6 mx-auto">
             <img
               src="https://fakhxzycjmlokihzsply.supabase.co/storage/v1/object/sign/loghi/loGo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81M2Y2MGQwNy1mOTgzLTQ5YjQtYjE5Mi05MDE4Yzg1NGRmYmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2doaS9sb0dvLnBuZyIsImlhdCI6MTc1NjY1NzIxNSwiZXhwIjoxNzg4MTkzMjE1fQ.T0QHXSKNpcCxNgBnKa7gpqDIZq0hqZ8fNfJWSTIOpWg"
