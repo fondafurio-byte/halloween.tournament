@@ -66,6 +66,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               id={`orario-gara-${p.id}`}
                               name={`orario-gara-${p.id}`}
                               className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
+                              style={{ width: '5.5ch', minWidth: '5.5ch', maxWidth: '5.5ch' }}
                               value={values[p.id]?.orario || ""}
                               onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
                               disabled={!isAdmin}
