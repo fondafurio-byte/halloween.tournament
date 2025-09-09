@@ -52,7 +52,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             <input
                               type="text"
                               placeholder="CAMPO"
-                              className="text-xs px-2 py-1 rounded bg-gray-900 text-white w-20 text-center placeholder:text-gray-400 border border-blue-700 focus:ring-0"
+                              className={`text-xs px-2 py-1 rounded w-20 text-center placeholder:text-gray-400 focus:ring-0 ${isAdmin ? 'bg-gray-900 text-white border border-blue-700' : 'bg-transparent text-white border-0'}`}
                               maxLength={8}
                               onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
                               value={values[p.id]?.campo || ""}
@@ -64,7 +64,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               type="time"
                               id={`orario-gara-${p.id}`}
                               name={`orario-gara-${p.id}`}
-                              className="text-xs px-2 py-1 rounded bg-gray-900 text-white text-center border border-blue-700 focus:ring-0"
+                              className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
                               value={values[p.id]?.orario || ""}
                               onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
                               disabled={!isAdmin}
