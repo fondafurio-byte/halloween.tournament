@@ -113,7 +113,7 @@ function GironeB() {
       .then(({ data }) => setClassifica(data || []));
 
     supabase
-      .from("giornate")
+      .from("partite")
       .select("*")
       .eq("girone", "B")
       .order("data", { ascending: true })
