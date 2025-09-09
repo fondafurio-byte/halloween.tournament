@@ -94,7 +94,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
   );
 }
 
-function GironeB() {
+function GironeB({ isAdmin }) {
   const [classifica, setClassifica] = useState([]);
   const [giornate, setGiornate] = useState([]);
   const [partite, setPartite] = useState([]);
