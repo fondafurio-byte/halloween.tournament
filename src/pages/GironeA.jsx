@@ -52,6 +52,11 @@ function CardGiornate({ partite, getNomeSquadra }) {
                           name={`orario-gara-${p.id}`}
                           className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-gray-800 text-white"
                         />
+                        <input
+                          type="text"
+                          placeholder="Testo..."
+                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-gray-800 text-white ml-2 w-24"
+                        />
                       </div>
                     </td>
                     <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra2}</td>
