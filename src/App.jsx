@@ -107,11 +107,19 @@ function CustomAdminLogin({ onSuccess, onClose }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Funzione per hashare la password in SHA-256
+  async function sha256(str) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    // Query tabella utenti: username e password (plaintext o hash, qui plaintext per esempio)
+    // Query tabella utenti: username e password (hash SHA-256)
     const { data, error: dbError } = await supabase
       .from("utenti")
       .select("*")
@@ -122,7 +130,8 @@ function CustomAdminLogin({ onSuccess, onClose }) {
       setLoading(false);
       return;
     }
-    if (data.password !== password) {
+    const passwordHash = await sha256(password);
+    if (data.password !== passwordHash) {
       setError("Password errata");
       setLoading(false);
       return;
