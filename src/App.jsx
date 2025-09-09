@@ -59,6 +59,15 @@ function App() {
               <option value="/girone-b">Girone B</option>
             </select>
           </div>
+          {/* Pulsante accedi come admin visibile solo se non admin */}
+          {!isAdmin && (
+            <button
+              className="mb-4 px-6 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold shadow"
+              onClick={() => setShowAdminLogin(true)}
+            >
+              Accedi come admin
+            </button>
+          )}
           <div className="w-full max-w-3xl">
             <Routes>
               <Route path="/girone-a" element={<GironeA />} />
