@@ -116,7 +116,8 @@ function GironeB({ isAdmin }) {
       .from("partite")
       .select("*")
       .eq("girone", "B")
-      .order("data", { ascending: true })
+      .order("gara", { ascending: true })
+      .order("girone", { ascending: true })
       .then(({ data }) => setGiornate(data || []));
 
     supabase
