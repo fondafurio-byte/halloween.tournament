@@ -42,7 +42,18 @@ function CardGiornate({ partite, getNomeSquadra }) {
                   <tr key={p.id} className="border-b border-gray-600 text-center align-middle">
                     <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra1_id)}</td>
                     <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra1}</td>
-                    <td className="py-2 px-2 text-center align-middle">-</td>
+                    <td className="py-2 px-2 text-center align-middle">
+                      -
+                      <div className="flex flex-col items-center mt-1">
+                        <label htmlFor={`orario-gara-${p.id}`} className="text-xs text-gray-400 mb-1">Orario</label>
+                        <input
+                          type="time"
+                          id={`orario-gara-${p.id}`}
+                          name={`orario-gara-${p.id}`}
+                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-gray-800 text-white"
+                        />
+                      </div>
+                    </td>
                     <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra2}</td>
                     <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra2_id)}</td>
                   </tr>
