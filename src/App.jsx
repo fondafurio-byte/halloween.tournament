@@ -70,19 +70,19 @@ function App() {
         <div className="min-h-screen flex flex-col items-center bg-black text-white">
           {/* Banner informativo installazione app */}
           {(showInstallBanner || isIos) && (
-            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-gray-900 bg-opacity-95 border border-blue-700 rounded-xl shadow-lg px-6 py-4 flex items-center gap-4 animate-fade-in">
-              <span className="font-semibold text-white">
+            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-black border-2 border-blue-700 rounded-2xl shadow-2xl px-10 py-6 flex flex-col sm:flex-row items-center gap-6 animate-fade-in w-[95vw] max-w-2xl">
+              <span className="font-bold text-lg sm:text-xl text-white text-center">
                 Installa questa webapp come app per un accesso più rapido!
                 {isIos ? (
                   <>
                     <br />
-                    <span className="text-sm text-gray-300">Su iPhone/iPad: premi <span className="inline-block px-1 py-0.5 bg-white text-black rounded">Condividi</span> e poi <b>Aggiungi a Home</b>.</span>
+                    <span className="block mt-2 text-base text-gray-200">Su iPhone/iPad: premi <span className="inline-block px-2 py-1 bg-white text-black rounded font-semibold">Condividi</span> e poi <b>Aggiungi a Home</b>.</span>
                   </>
                 ) : null}
               </span>
               {!isIos && showInstallBanner && (
                 <button
-                  className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded font-bold shadow"
+                  className="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-bold shadow text-lg"
                   onClick={async () => {
                     if (deferredPrompt) {
                       deferredPrompt.prompt();
@@ -95,7 +95,7 @@ function App() {
                 </button>
               )}
               <button
-                className="ml-2 text-gray-400 hover:text-white text-xl font-bold"
+                className="ml-2 text-gray-400 hover:text-white text-2xl font-bold"
                 onClick={() => { setShowInstallBanner(false); setIsIos(false); }}
                 title="Chiudi"
               >
