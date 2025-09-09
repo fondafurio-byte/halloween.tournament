@@ -46,29 +46,31 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                       <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra1}</td>
                       <td className="py-2 px-2 text-center align-middle">
                         -
-                        <div className="flex flex-row items-center justify-center mt-1 gap-2">
-                          <input
-                            type="text"
-                            placeholder="Testo..."
-                            className="text-xs px-1 py-0.5 rounded bg-transparent text-white w-24 text-center placeholder:text-gray-400 border-0 focus:ring-0"
-                            maxLength={8}
-                            onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
-                            value={values[p.id]?.campo || ""}
-                            disabled={!isAdmin}
-                            readOnly={!isAdmin}
-                            tabIndex={isAdmin ? 0 : -1}
-                          />
-                          <input
-                            type="time"
-                            id={`orario-gara-${p.id}`}
-                            name={`orario-gara-${p.id}`}
-                            className="text-xs px-1 py-0.5 rounded bg-transparent text-white text-center border-0 focus:ring-0"
-                            value={values[p.id]?.orario || ""}
-                            onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
-                            disabled={!isAdmin}
-                            readOnly={!isAdmin}
-                            tabIndex={isAdmin ? 0 : -1}
-                          />
+                        <div className="flex flex-col items-center justify-center mt-1 gap-1">
+                          <div className="flex flex-row items-center justify-center gap-2 bg-gray-800 rounded-lg px-3 py-2 shadow-md">
+                            <input
+                              type="text"
+                              placeholder="CAMPO"
+                              className="text-xs px-2 py-1 rounded bg-gray-900 text-white w-20 text-center placeholder:text-gray-400 border border-blue-700 focus:ring-0"
+                              maxLength={8}
+                              onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
+                              value={values[p.id]?.campo || ""}
+                              disabled={!isAdmin}
+                              readOnly={!isAdmin}
+                              tabIndex={isAdmin ? 0 : -1}
+                            />
+                            <input
+                              type="time"
+                              id={`orario-gara-${p.id}`}
+                              name={`orario-gara-${p.id}`}
+                              className="text-xs px-2 py-1 rounded bg-gray-900 text-white text-center border border-blue-700 focus:ring-0"
+                              value={values[p.id]?.orario || ""}
+                              onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
+                              disabled={!isAdmin}
+                              readOnly={!isAdmin}
+                              tabIndex={isAdmin ? 0 : -1}
+                            />
+                          </div>
                         </div>
                       </td>
                       <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra2}</td>
