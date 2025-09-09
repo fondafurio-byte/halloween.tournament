@@ -45,48 +45,42 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                       <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra1_id)}</td>
                       <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra1}</td>
                       <td className="py-2 px-2 text-center align-middle">
-                        <div>
-                          -
-                          <div className="flex flex-col items-center justify-center mt-1 gap-1">
-                            <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md">
-                              {/* bg-transparent mantiene lo sfondo trasparente */}
-                              <input
-                                type="text"
-                                placeholder="CAMPO"
-                                className={`text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 ${isAdmin ? 'bg-gray-900 text-white border border-blue-700' : 'bg-transparent text-white border-0'}`}
-                                style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.25rem' }}
-                                maxLength={8}
-                                onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
-                                value={values[p.id]?.campo || ""}
-                                disabled={!isAdmin}
-                                readOnly={!isAdmin}
-                                tabIndex={isAdmin ? 0 : -1}
-                              />
-                              <input
-                                type="time"
-                                id={`orario-gara-${p.id}`}
-                                name={`orario-gara-${p.id}`}
-                                placeholder="HH:mm"
-                                className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
-                                style={{
-                                  width: isAdmin ? '8ch' : '9ch',
-                                  minWidth: isAdmin ? '8ch' : '9ch',
-                                  maxWidth: isAdmin ? '8ch' : '9ch',
-                                  color: 'white',
-                                  appearance: !isAdmin ? 'none' : undefined,
-                                  WebkitAppearance: !isAdmin ? 'none' : undefined,
-                                  MozAppearance: !isAdmin ? 'none' : undefined
-                                }}
-                                value={values[p.id]?.orario || ""}
-                                onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
-                                disabled={!isAdmin}
-                                readOnly={!isAdmin}
-                                tabIndex={isAdmin ? 0 : -1}
-                              />
-                            </div>
-                            <div className="text-[10px] text-gray-400 mt-1 text-center">
-                              Formato orario: 24h (es. 14:30)
-                            </div>
+                        -
+                        <div className="flex flex-col items-center justify-center mt-1 gap-1">
+                          <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md">
+                            {/* bg-transparent mantiene lo sfondo trasparente */}
+                            <input
+                              type="text"
+                              placeholder="CAMPO"
+                              className={`text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 ${isAdmin ? 'bg-gray-900 text-white border border-blue-700' : 'bg-transparent text-white border-0'}`}
+                              style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.25rem' }}
+                              maxLength={8}
+                              onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
+                              value={values[p.id]?.campo || ""}
+                              disabled={!isAdmin}
+                              readOnly={!isAdmin}
+                              tabIndex={isAdmin ? 0 : -1}
+                            />
+                            <input
+                              type="time"
+                              id={`orario-gara-${p.id}`}
+                              name={`orario-gara-${p.id}`}
+                              className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
+                              style={{
+                                width: isAdmin ? '8ch' : '9ch',
+                                minWidth: isAdmin ? '8ch' : '9ch',
+                                maxWidth: isAdmin ? '8ch' : '9ch',
+                                color: 'white',
+                                appearance: !isAdmin ? 'none' : undefined,
+                                WebkitAppearance: !isAdmin ? 'none' : undefined,
+                                MozAppearance: !isAdmin ? 'none' : undefined
+                              }}
+                              value={values[p.id]?.orario || ""}
+                              onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
+                              disabled={!isAdmin}
+                              readOnly={!isAdmin}
+                              tabIndex={isAdmin ? 0 : -1}
+                            />
                           </div>
                         </div>
                       </td>
