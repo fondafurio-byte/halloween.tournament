@@ -45,17 +45,16 @@ function CardGiornate({ partite, getNomeSquadra }) {
                     <td className="py-2 px-2 text-center align-middle">
                       -
                       <div className="flex flex-row items-center justify-center mt-1 gap-2">
-                        <div className="w-8 h-6 bg-gray-800 rounded" />
                         <input
                           type="text"
                           placeholder="Testo..."
-                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-gray-800 text-white w-24"
+                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-transparent text-white w-24 text-center placeholder:text-gray-400"
                         />
                         <input
                           type="time"
                           id={`orario-gara-${p.id}`}
                           name={`orario-gara-${p.id}`}
-                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-gray-800 text-white"
+                          className="text-xs px-1 py-0.5 rounded border border-gray-500 bg-transparent text-white text-center"
                         />
                       </div>
                     </td>
