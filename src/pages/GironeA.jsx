@@ -55,11 +55,10 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               className="text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 bg-transparent text-white border-0"
                               style={{ width: '8.5ch', minWidth: '8.5ch', maxWidth: '8.5ch', marginRight: '0.8rem' }}
                               maxLength={8}
-                              onChange={e => isAdmin ? onChange(p.id, "campo", e.target.value) : undefined}
                               value={values[p.id]?.campo || ""}
-                              disabled={!isAdmin}
-                              readOnly={!isAdmin}
-                              tabIndex={isAdmin ? 0 : -1}
+                              readOnly={false}
+                              disabled={false}
+                              tabIndex={0}
                             />
                             <input
                               type="time"
