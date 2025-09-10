@@ -64,12 +64,21 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               type="time"
                               id={`orario-gara-${p.id}`}
                               name={`orario-gara-${p.id}`}
-                              className="text-xs px-2 py-1 rounded text-white text-center focus:ring-0 bg-transparent border-0"
-                              style={{ width: '10ch', minWidth: '10ch', maxWidth: '10ch', color: 'white', appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'none' }}
+                              className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
+                              style={{
+                                width: isAdmin ? '9ch' : '10ch',
+                                minWidth: isAdmin ? '9ch' : '10ch',
+                                maxWidth: isAdmin ? '9ch' : '10ch',
+                                color: 'white',
+                                appearance: !isAdmin ? 'none' : undefined,
+                                WebkitAppearance: !isAdmin ? 'none' : undefined,
+                                MozAppearance: !isAdmin ? 'none' : undefined
+                              }}
                               value={values[p.id]?.orario || ""}
-                              readOnly={false}
-                              disabled={false}
-                              tabIndex={0}
+                              onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
+                              disabled={!isAdmin}
+                              readOnly={!isAdmin}
+                              tabIndex={isAdmin ? 0 : -1}
                             />
                           </div>
                         </div>
