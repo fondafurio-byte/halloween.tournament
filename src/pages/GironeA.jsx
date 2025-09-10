@@ -47,7 +47,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                         <div className="flex flex-col items-center justify-center h-full">
                           <div className="flex flex-row items-center justify-center gap-8 mb-3">
                             <span className="block text-lg font-bold text-blue-400 leading-none">{p.punti_squadra1}</span>
-                            <span className="block text-xl leading-none">-</span>
+                            <span className="block text-xl leading-none">&nbsp;-&nbsp;</span>
                             <span className="block text-lg font-bold text-blue-400 leading-none">{p.punti_squadra2}</span>
                           </div>
                           <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md mt-0">
@@ -55,7 +55,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                             <input
                               type="text"
                               placeholder="CAMPO"
-                              className="text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0"
+                              className="text-xs px-2 py-1 rounded text-right placeholder:text-gray-400 focus:ring-0"
                               style={{
                                 width: '8.5ch',
                                 minWidth: '8.5ch',
@@ -66,6 +66,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                                 WebkitTextFillColor: '#fff',
                                 WebkitBoxShadow: '0 0 0px 1000px #000 inset',
                                 border: 'none'
+                                ,textAlign: 'right'
                               }}
                               maxLength={8}
                               value={values[p.id]?.campo || ""}
