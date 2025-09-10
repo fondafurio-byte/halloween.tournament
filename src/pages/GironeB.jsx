@@ -53,7 +53,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               type="text"
                               placeholder="CAMPO"
                               className="text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 bg-transparent text-white border-0"
-                              style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.25rem' }}
+                              style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.6rem' }}
                               maxLength={8}
                               value={values[p.id]?.campo || ""}
                               readOnly={false}
