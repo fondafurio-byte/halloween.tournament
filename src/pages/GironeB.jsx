@@ -53,7 +53,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               type="text"
                               placeholder="CAMPO"
                               className="text-xs px-2 py-1 rounded text-center placeholder:text-gray-400 focus:ring-0 bg-transparent text-white border-0"
-                              style={{ width: '7.5ch', minWidth: '7.5ch', maxWidth: '7.5ch', marginRight: '0.6rem' }}
+                              style={{ width: '8.5ch', minWidth: '8.5ch', maxWidth: '8.5ch', marginRight: '0.8rem' }}
                               maxLength={8}
                               value={values[p.id]?.campo || ""}
                               readOnly={false}
@@ -65,7 +65,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                               id={`orario-gara-${p.id}`}
                               name={`orario-gara-${p.id}`}
                               className="text-xs px-2 py-1 rounded text-white text-center focus:ring-0 bg-transparent border-0"
-                              style={{ width: '9ch', minWidth: '9ch', maxWidth: '9ch', color: 'white', appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'none' }}
+                              style={{ width: '10ch', minWidth: '10ch', maxWidth: '10ch', color: 'white', appearance: 'none', WebkitAppearance: 'none', MozAppearance: 'none' }}
                               value={values[p.id]?.orario || ""}
                               readOnly={false}
                               disabled={false}
