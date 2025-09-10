@@ -43,10 +43,13 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                   {partiteGiornata.map(p => (
                     <tr key={p.id} className="border-b border-gray-600 text-center align-middle">
                       <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra1_id)}</td>
-                      <td className="py-2 px-2 text-center align-middle" colSpan={2}>
+                      <td className="py-2 px-2 text-center align-middle" colSpan={3}>
                         <div className="flex flex-col items-center justify-center h-full">
-                          <span className="block text-lg font-bold text-blue-400 leading-none">{p.punti_squadra1}</span>
-                          <span className="block text-xl leading-none mb-1">-</span>
+                          <div className="flex flex-row items-center justify-center gap-4 mb-1">
+                            <span className="block text-lg font-bold text-blue-400 leading-none">{p.punti_squadra1}</span>
+                            <span className="block text-xl leading-none">-</span>
+                            <span className="block text-lg font-bold text-blue-400 leading-none">{p.punti_squadra2}</span>
+                          </div>
                           <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md">
                             {/* bg-transparent mantiene lo sfondo trasparente */}
                             <input
@@ -93,7 +96,6 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                           </div>
                         </div>
                       </td>
-                      <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra2}</td>
                       <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra2_id)}</td>
                     </tr>
                   ))}
