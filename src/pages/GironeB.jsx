@@ -45,8 +45,8 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                       <td className="py-2 px-2 font-semibold text-center align-middle">{getNomeSquadra(p.squadra1_id)}</td>
                       <td className="py-2 px-2 font-bold text-lg text-blue-400 text-center align-middle">{p.punti_squadra1}</td>
                       <td className="py-2 px-2 text-center align-middle">
-                        -
-                        <div className="flex flex-col items-center justify-center mt-1 gap-1">
+                        <div className="flex flex-col items-center justify-center h-full">
+                          <span className="block text-xl leading-none mb-1">-</span>
                           <div className="flex flex-row items-center justify-center gap-2 bg-transparent rounded-lg px-3 py-2 shadow-md">
                             {/* bg-transparent mantiene lo sfondo trasparente */}
                             <input
