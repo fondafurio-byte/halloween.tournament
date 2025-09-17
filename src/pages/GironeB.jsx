@@ -65,34 +65,33 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
                                 color: '#fff !important',
                                 WebkitTextFillColor: '#fff',
                                 WebkitBoxShadow: '0 0 0px 1000px #000 inset',
-                                border: 'none'
-                                ,textAlign: 'right'
+                                border: 'none',
+                                textAlign: 'right'
                               }}
                               maxLength={8}
                               value={values[p.id]?.campo || ""}
-                              readOnly={false}
-                              disabled={false}
-                              tabIndex={0}
+                              readOnly={true}
+                              disabled={true}
+                              tabIndex={-1}
                             />
                             <input
                               type="time"
                               id={`orario-gara-${p.id}`}
                               name={`orario-gara-${p.id}`}
-                              className={`text-xs px-2 py-1 rounded text-white text-center focus:ring-0 ${isAdmin ? 'bg-gray-900 border border-blue-700' : 'bg-transparent border-0'}`}
+                              className="text-xs px-2 py-1 rounded text-white text-center focus:ring-0 bg-transparent border-0"
                               style={{
-                                width: isAdmin ? '9ch' : '10ch',
-                                minWidth: isAdmin ? '9ch' : '10ch',
-                                maxWidth: isAdmin ? '9ch' : '10ch',
+                                width: '10ch',
+                                minWidth: '10ch',
+                                maxWidth: '10ch',
                                 color: 'white',
-                                appearance: !isAdmin ? 'none' : undefined,
-                                WebkitAppearance: !isAdmin ? 'none' : undefined,
-                                MozAppearance: !isAdmin ? 'none' : undefined
+                                appearance: 'none',
+                                WebkitAppearance: 'none',
+                                MozAppearance: 'none'
                               }}
                               value={values[p.id]?.orario || ""}
-                              onChange={e => isAdmin ? onChange(p.id, "orario", e.target.value) : undefined}
-                              disabled={!isAdmin}
-                              readOnly={!isAdmin}
-                              tabIndex={isAdmin ? 0 : -1}
+                              readOnly={true}
+                              disabled={true}
+                              tabIndex={-1}
                             />
                           </div>
                         </div>
@@ -104,16 +103,7 @@ function CardGiornate({ partite, getNomeSquadra, onChange, values, isAdmin, onCo
               </table>
             </div>
           ))}
-          {isAdmin && (
-            <div className="flex justify-center mt-6">
-              <button
-                className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded shadow-lg"
-                onClick={onConferma}
-              >
-                Conferma Modifiche
-              </button>
-            </div>
-          )}
+          {/* Bottone Conferma Modifiche rimosso per sola lettura */}
         </>
       )}
     </div>
@@ -183,20 +173,6 @@ function GironeB({ isAdmin }) {
     }));
   };
 
-  const handleConferma = async () => {
-    setLoading(true);
-    setMessage("");
-    try {
-      const updates = Object.entries(inputValues).map(([id, vals]) =>
-    supabase.from("partite").update({ campo: vals.campo, orario: vals.orario }).eq("id", id)
-      );
-      await Promise.all(updates);
-      setMessage("Modifiche salvate con successo!");
-    } catch (e) {
-      setMessage("Errore nel salvataggio delle modifiche.");
-    }
-    setLoading(false);
-  };
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-black text-white py-8">
